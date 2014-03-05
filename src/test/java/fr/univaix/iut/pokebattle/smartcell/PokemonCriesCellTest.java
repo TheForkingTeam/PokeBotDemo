@@ -18,5 +18,10 @@ public class PokemonCriesCellTest {
     public void testNotSalut() {
         assertEquals("@nedseb Pika pika", cell.ask(new Tweet("nedseb", "au revoir")));
     }
+    
+    @Test
+    public void testReturnNomEleveur() {
+    	assertEquals("@nedseb "+ pokemon.getDresseur(), cell.ask(new Tweet("nedseb", "Salut")));
+    }
 
 }
