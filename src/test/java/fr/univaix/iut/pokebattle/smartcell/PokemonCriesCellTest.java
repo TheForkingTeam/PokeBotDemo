@@ -7,7 +7,7 @@ import static org.junit.Assert.assertEquals;
 
 public class PokemonCriesCellTest {
 
-    PokemonCriesCell cell = new PokemonCriesCell();
+    PokemonCriesCell cell = new PokemonCriesCell("Mew Shiney");
 
     @Test
     public void testSalut() {
@@ -21,7 +21,7 @@ public class PokemonCriesCellTest {
     
     @Test
     public void testReturnNomEleveur() {
-    	assertEquals("@nedseb "+ pokemon.getDresseur(), cell.ask(new Tweet("nedseb", "Salut")));
+    	assertEquals("@nedseb @Kyochi is my owner", cell.ask(new Tweet("nedseb", "Owner?")));
     }
 
 }

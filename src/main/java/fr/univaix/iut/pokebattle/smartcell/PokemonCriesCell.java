@@ -12,13 +12,17 @@ public class PokemonCriesCell implements SmartCell {
 	
 	public PokemonCriesCell(String Pokemon) {
 		if (Pokemon != null ) {
-			m_NomPokemon = "Mew Shiney";
+			m_NomPokemon = Pokemon;
 			m_Dresseur = "Kyochi";
 		}
 	}
     public String ask(Tweet question) {
-        if (question.getScreenName() != null && this.getDresseur() != null) {
-            return "@" + question.getScreenName() + "@" + this.getDresseur() + " Pika pika";
+        if (question.getScreenName() != null ) {
+        		if (question.getText().equals("Owner?")) {
+        		return "@" + question.getScreenName() + "@" + this.getDresseur() + " is my owner";
+        		}
+        	return "@" + question.getScreenName() + " Pika pika";
+        		
         }
         return "Pika pika";
     }
