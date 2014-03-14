@@ -5,20 +5,16 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * Integration tests checking the PokeBot
- * behavior. We just test some cases to make sure that the
- * PokeBot is using smartcell properly.
- */
+// Utilisation de diverses SmartCells pour voir si le Bot fonctionne.
 public class PokeBotTest {
     PokeBot pokeBot = new PokeBot();
 
     @Test
     public void testSalut() {
-        assertEquals("Pika pika", pokeBot.ask(new Tweet("Salut")));
-        assertEquals("Pika pika", pokeBot.ask(new Tweet("This is not a question.")));
-        assertEquals("@nedseb Pika pika", pokeBot.ask(new Tweet("nedseb", "Salut")));
-        assertEquals("@nedseb Pika pika", pokeBot.ask(new Tweet("nedseb", "This is not a question.")));
-        assertEquals("@nedseb @Kyochi is my owner", pokeBot.ask(new Tweet("nedseb", "Owner?")));
+        assertEquals("@usertest Hay !", pokeBot.ask(new Tweet("usertest", "Salut, toi !")));
+        assertEquals("@usertest Wut ?", pokeBot.ask(new Tweet("usertest","This is not a question.")));
+        
     }
+    
+    
 }
