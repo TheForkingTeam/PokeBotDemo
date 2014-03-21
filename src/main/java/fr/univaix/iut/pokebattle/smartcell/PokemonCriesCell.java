@@ -1,5 +1,6 @@
 package fr.univaix.iut.pokebattle.smartcell;
 
+import fr.univaix.iut.pokebattle.bot.PokeBot;
 import fr.univaix.iut.pokebattle.twitter.Tweet;
 
 /**
@@ -15,9 +16,9 @@ public class PokemonCriesCell implements SmartCell {
 							 		"Bonjour","bonjour","salut", "au revoir",
 							 		"bye", "Bye", "adieu", "Adieu", "Au revoir"};
 	
-	public PokemonCriesCell(String nam, String own) {
-		name = nam;
-		owner = own;
+	public PokemonCriesCell(PokeBot pkmn) {
+		name = pkmn.getName();
+		owner = pkmn.getOwner();
 	}
 	
     public String ask(Tweet question) {

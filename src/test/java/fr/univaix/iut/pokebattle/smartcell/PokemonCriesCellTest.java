@@ -1,5 +1,6 @@
 package fr.univaix.iut.pokebattle.smartcell;
 
+import fr.univaix.iut.pokebattle.bot.PokeBot;
 import fr.univaix.iut.pokebattle.twitter.Tweet;
 import org.junit.Test;
 
@@ -8,7 +9,9 @@ import static org.junit.Assert.assertEquals;
 public class PokemonCriesCellTest {
 	
 	String usertest = "nedseb"; 
-    PokemonCriesCell cell = new PokemonCriesCell("Forkachu", "Rwog");
+	PokeBot pkmn = new PokeBot();
+	
+    PokemonCriesCell cell = new PokemonCriesCell(pkmn);
 
     @Test
     public void testSalut() {
