@@ -6,6 +6,7 @@ import fr.univaix.iut.pokebattle.twitter.Tweet;
 
 import org.junit.Test;
 
+import twitter4j.TwitterException;
 import fr.univaix.iut.pokebattle.bot.PokeBot;
 
 public class PokemonPokeballCellTest {
@@ -20,14 +21,22 @@ public class PokemonPokeballCellTest {
 	@Test
 	public void testPokeballOnAlreadyCaught() {
 		pkmn.setName("Forkachu");
-		pkmn.setOwner("Rwog");
+		try {
+			pkmn.setOwner("Rwog");
+		} catch (TwitterException e) {
+			e.printStackTrace();
+		}
 		assertEquals("@needsob @Rwog is my owner!", cell.ask(new Tweet("needsob", "Pokeball!")));
 	}
 
 	@Test
 	public void testPokeballOnWildPkmn() {
 		pkmn.setName("Forkachu");
-		pkmn.setOwner(null);
+		try {
+			pkmn.setOwner(null);
+		} catch (TwitterException e) {
+			e.printStackTrace();
+		}
 		assertEquals("You caught me !", cell.ask(new Tweet("needsob", "Pokeball!")));
 	}
 	
