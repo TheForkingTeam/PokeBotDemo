@@ -1,6 +1,8 @@
 package fr.univaix.iut.pokebattle.bot;
 
+import fr.univaix.iut.pokebattle.smartcell.PokemonAttackingCell;
 import fr.univaix.iut.pokebattle.smartcell.PokemonCriesCell;
+import fr.univaix.iut.pokebattle.smartcell.PokemonPokeballCell;
 import fr.univaix.iut.pokebattle.smartcell.SmartCell;
 import fr.univaix.iut.pokebattle.twitter.Tweet;
 
@@ -11,7 +13,9 @@ public class PokeBot implements Bot {
 	String m_Owner = "Rwog";
 	
     private final SmartCell[] smartCells = new SmartCell[]{
-            new PokemonCriesCell(m_Name, m_Owner),
+            new PokemonCriesCell(this),
+            new PokemonAttackingCell(this),
+            new PokemonPokeballCell(this)
     };
 
     
@@ -30,7 +34,9 @@ public class PokeBot implements Bot {
     public String getName() {return m_Name;}
     public String getOwner() {return m_Owner;}
     
+    
     // Setters
-    public void setOwner(String own) {m_Owner = own;} 
+    public void setOwner(String own) {m_Owner = own;}
+    public void setName(String nam) {m_Name = nam;}
     
 }
