@@ -1,5 +1,6 @@
 package fr.univaix.iut.pokebattle.smartcell;
 
+import fr.univaix.iut.pokebattle.bot.PokeBot;
 import fr.univaix.iut.pokebattle.twitter.Tweet;
 
 /**
@@ -7,30 +8,43 @@ import fr.univaix.iut.pokebattle.twitter.Tweet;
  */
 public class PokemonCriesCell implements SmartCell {
 
-	public String m_NomPokemon;
-	public String m_Dresseur;
+	String name;
+	String owner; 
 	
-	public PokemonCriesCell(String Pokemon) {
-		if (Pokemon != null ) {
-			m_NomPokemon = Pokemon;
-			m_Dresseur = "Kyochi";
-		}
+	// Chaînes déclenchant un cri de pokémon 
+	public CharSequence[] HiSet = {"Salut","Wesh","wesh",
+							 		"Bonjour","bonjour","salut", "au revoir",
+							 		"bye", "Bye", "adieu", "Adieu", "Au revoir"};
+	
+	public PokemonCriesCell(PokeBot pkmn) {
+		name = pkmn.getName();
+		owner = pkmn.getOwner();
 	}
+	
     public String ask(Tweet question) {
         if (question.getScreenName() != null ) {
-        		if (question.getText().equals("Owner?")) {
-        		return "@" + question.getScreenName() + "@" + this.getDresseur() + " is my owner";
-        		}
-        	return "@" + question.getScreenName() + " Pika pika";
-        		
+        	if (question.getText().equals("Owner?")) {
+        		if (owner != null) {
+        			return "@" + question.getScreenName() 
+        					+ " @" + this.getDresseur() + " is my owner";
+        			}
+        			return "@" + question.getScreenName() 
+        					+ " No owner";
+        	}
+        	for (int i = 0 ; i< HiSet.length; i++ ) {
+        		if (question.getText().contains(HiSet[i]))
+        			return "@" + question.getScreenName() + " Hay !";
+        	}
+        	return "@" + question.getScreenName() + " Wut ?";
         }
-        return "Pika pika";
+        return " Wut ?";
     }
 
+    // Getters
     public String getDresseur() {
-    	return m_Dresseur;
+    	return owner;
     }
     public String getPokemon() {
-    	return m_NomPokemon;
+    	return name;
     }
 }

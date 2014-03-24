@@ -1,25 +1,24 @@
 package fr.univaix.iut.pokebattle.bot;
 
+import fr.univaix.iut.pokebattle.smartcell.PokemonAttackingCell;
 import fr.univaix.iut.pokebattle.smartcell.PokemonCriesCell;
+import fr.univaix.iut.pokebattle.smartcell.PokemonPokeballCell;
 import fr.univaix.iut.pokebattle.smartcell.SmartCell;
 import fr.univaix.iut.pokebattle.twitter.Tweet;
 
 
 public class PokeBot implements Bot {
-    /**
-     * List of smartcell the questions go through to
-     * find an answer.
-     */
+	
+	String m_Name = "Forkachu";
+	String m_Owner = "Rwog";
+	
     private final SmartCell[] smartCells = new SmartCell[]{
-            new PokemonCriesCell("Mew Shiney"),
+            new PokemonCriesCell(this),
+            new PokemonAttackingCell(this),
+            new PokemonPokeballCell(this)
     };
 
-    /**
-     * Ask something to Bot, it will respond to you.
-     *
-     * @param question The question you ask.
-     * @return An answer... or null if it doesn't get it.
-     */
+    
     @Override
     public String ask(Tweet question) {
         for (SmartCell cell : smartCells) {
@@ -31,4 +30,13 @@ public class PokeBot implements Bot {
         return null;
     }
 
+    // Getters 
+    public String getName() {return m_Name;}
+    public String getOwner() {return m_Owner;}
+    
+    
+    // Setters
+    public void setOwner(String own) {m_Owner = own;}
+    public void setName(String nam) {m_Name = nam;}
+    
 }
