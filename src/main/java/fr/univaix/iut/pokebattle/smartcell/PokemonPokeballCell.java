@@ -1,5 +1,6 @@
 package fr.univaix.iut.pokebattle.smartcell;
 
+import twitter4j.TwitterException;
 import fr.univaix.iut.pokebattle.bot.PokeBot;
 import fr.univaix.iut.pokebattle.twitter.Tweet;
 
@@ -19,7 +20,11 @@ public class PokemonPokeballCell implements SmartCell {
 			
 			//Tweet Pokeball NewOwner
 			if (pkmn.getOwner() == null) {
-				pkmn.setOwner(question.getScreenName());
+				try {
+					pkmn.setOwner(question.getScreenName());
+				} catch (TwitterException e) {
+					e.printStackTrace();
+				}
 				String caughtrep = "You caught me !";
 				return caughtrep;
 			}
