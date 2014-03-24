@@ -10,6 +10,7 @@ import fr.univaix.iut.pokebattle.twitter.Tweet;
 public class PokeBot implements Bot {
 	
 	String m_Name = "Forkachu";
+	String m_Type = "Pikachu";
 	String m_Owner = "Rwog";
 	
     private final SmartCell[] smartCells = new SmartCell[]{

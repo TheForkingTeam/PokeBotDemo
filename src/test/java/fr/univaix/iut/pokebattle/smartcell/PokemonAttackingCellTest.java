@@ -9,10 +9,8 @@ import fr.univaix.iut.pokebattle.twitter.Tweet;
 
 public class PokemonAttackingCellTest {
 
-	String cible = "PkmnDumm";
-	String name = "nedseb";
-	String name2 = "Rwog";
-	
+	String cible = "PkmnDummy";
+	String cibleown = "needsob";
 	PokeBot pkmn = new PokeBot();
 	
 	PokemonAttackingCell cell = new PokemonAttackingCell(pkmn);
@@ -23,8 +21,7 @@ public class PokemonAttackingCellTest {
 	
 	@Test
 	public void testAttackProprio() {
-		assertEquals("@"+cible+" #attack #foudre! /cc @Rwog", cell.ask(new Tweet("Rwog","@Forkachu #attack #foudre @"+cible)));
-		System.out.println(cell.ask(new Tweet("Rwog","@Forkachu #attack #foudre @"+cible)));
+		assertEquals("@"+cible+" #attack #foudre! /cc @Rwog @needsob", cell.ask(new Tweet("Rwog","@Forkachu #attack #foudre @"+cible+" /cc @"+cibleown)));
 	}
 
 }
