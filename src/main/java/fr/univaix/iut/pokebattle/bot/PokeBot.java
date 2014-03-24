@@ -2,6 +2,7 @@ package fr.univaix.iut.pokebattle.bot;
 
 import fr.univaix.iut.pokebattle.smartcell.PokemonAttackingCell;
 import fr.univaix.iut.pokebattle.smartcell.PokemonCriesCell;
+import fr.univaix.iut.pokebattle.smartcell.PokemonKOAlertCell;
 import fr.univaix.iut.pokebattle.smartcell.PokemonPokeballCell;
 import fr.univaix.iut.pokebattle.smartcell.SmartCell;
 import fr.univaix.iut.pokebattle.twitter.Tweet;
@@ -12,13 +13,15 @@ public class PokeBot implements Bot {
 	String m_Name = "Forkachu";
 	String m_Type = "Pikachu";
 	String m_Owner = "Rwog";
+	int m_HP_max  = 50;
+	int m_HP_curr = m_HP_max;
 	
     private final SmartCell[] smartCells = new SmartCell[]{
             new PokemonCriesCell(this),
             new PokemonAttackingCell(this),
-            new PokemonPokeballCell(this)
+            new PokemonPokeballCell(this),
+            new PokemonKOAlertCell(this),
     };
-
     
     @Override
     public String ask(Tweet question) {
@@ -34,6 +37,8 @@ public class PokeBot implements Bot {
     // Getters 
     public String getName() {return m_Name;}
     public String getOwner() {return m_Owner;}
+    public int getHPmax() {return m_HP_max;}
+    public int getHPcurr() {return m_HP_curr;}
     
     
     // Setters
