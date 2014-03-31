@@ -12,7 +12,7 @@ public class BotRunner {
     private BotRunner() {
 
     }
-
+    
     public static void runBot(Bot bot, String credentialsFileName) throws TUSEException {
         try (InputStream inputStream = getResourceAsStream(credentialsFileName)) {
             Credentials credentials = Credentials.loadCredentials(inputStream);
@@ -26,4 +26,5 @@ public class BotRunner {
     static InputStream getResourceAsStream(String fileName) {
         return PokemonMain.class.getClassLoader().getResourceAsStream(fileName);
     }
+    
 }
