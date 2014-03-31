@@ -5,6 +5,7 @@ import twitter4j.TwitterException;
 import twitter4j.User;
 import fr.univaix.iut.pokebattle.func.*;
 import fr.univaix.iut.pokebattle.smartcell.*;
+
 import fr.univaix.iut.pokebattle.twitter.Tweet;
 
 
@@ -42,6 +43,7 @@ public class PokeBot implements Bot {
 	public int getHPcurr() {return m_Stats.getHPcurr();}
 	public Twitter getTwit() {return m_Twit;}
 	
+
 	public PokeStats getPokeStats() {return m_Stats;}
 	
 
@@ -63,5 +65,4 @@ public class PokeBot implements Bot {
 			e.printStackTrace();
 		}
 	}
-
 }

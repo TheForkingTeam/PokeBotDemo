@@ -1,5 +1,6 @@
 package fr.univaix.iut.pokebattle.smartcell;
 
+
 import fr.univaix.iut.pokebattle.func.PokeStats;
 import fr.univaix.iut.pokebattle.twitter.Tweet;
 
@@ -17,6 +18,7 @@ public class PokemonPokeballCell implements SmartCell {
 		// Test Pokeball    
 		if (question.getText().contains("Pokeball!")) {
 			//Tweet Pokeball NewOwner
+
 			if (m_pkstat.getOwner() == null) {
 				m_pkstat.setOwner(question.getScreenName());
 				String caughtrep = "You caught me !";
