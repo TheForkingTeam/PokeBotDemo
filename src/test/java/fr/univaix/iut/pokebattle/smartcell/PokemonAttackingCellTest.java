@@ -11,16 +11,29 @@ public class PokemonAttackingCellTest {
 
 	String cible = "PkmnDummy";
 	String cibleown = "needsob";
+
 	PokeBot pkmn = new PokeBot();
 	
-	PokemonAttackingCell cell = new PokemonAttackingCell(pkmn);
+	PokemonAttackingCell cell = new PokemonAttackingCell(pkmn.getPokeStats());
+	
+	public void setStat() {
+		pkmn.getPokeStats().setName("Forkachu");
+		pkmn.getPokeStats().setOwner("Rwog");
+		pkmn.getPokeStats().setRace("Pikachu");
+		pkmn.getPokeStats().setHPmax(50);
+		pkmn.getPokeStats().setHPcurr(10);
+	}
+	
 	@Test
 	public void testAttackNonProprio() {
+		setStat();
 		assertEquals("@Rwog is my user", cell.ask(new Tweet("nedseb","@Forkachu #attack #foudre @"+cible)));
+		
 	}
 	
 	@Test
 	public void testAttackProprio() {
+		setStat();
 		assertEquals("@"+cible+" #attack #foudre! /cc @Rwog @needsob", cell.ask(new Tweet("Rwog","@Forkachu #attack #foudre @"+cible+" /cc @"+cibleown)));
 	}
 

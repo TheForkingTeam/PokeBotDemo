@@ -1,48 +1,67 @@
 package fr.univaix.iut.pokebattle.bot;
 
-import fr.univaix.iut.pokebattle.smartcell.PokemonAttackingCell;
-import fr.univaix.iut.pokebattle.smartcell.PokemonCriesCell;
-import fr.univaix.iut.pokebattle.smartcell.PokemonKOAlertCell;
-import fr.univaix.iut.pokebattle.smartcell.PokemonPokeballCell;
-import fr.univaix.iut.pokebattle.smartcell.SmartCell;
+import twitter4j.Twitter;
+import twitter4j.TwitterException;
+import twitter4j.User;
+import fr.univaix.iut.pokebattle.func.*;
+import fr.univaix.iut.pokebattle.smartcell.*;
 import fr.univaix.iut.pokebattle.twitter.Tweet;
 
 
 public class PokeBot implements Bot {
-	
-	String m_Name = "Forkachu";
-	String m_Type = "Pikachu";
-	String m_Owner = "Rwog";
-	int m_HP_max  = 50;
-	int m_HP_curr = m_HP_max;
-	
-    private final SmartCell[] smartCells = new SmartCell[]{
-            new PokemonCriesCell(this),
-            new PokemonAttackingCell(this),
-            new PokemonPokeballCell(this),
-            new PokemonKOAlertCell(this),
-    };
-    
-    @Override
-    public String ask(Tweet question) {
-        for (SmartCell cell : smartCells) {
-            String answer = cell.ask(question);
-            if (answer != null) {
-                return answer;
-            }
-        }
-        return null;
-    }
+	private Twitter m_Twit;
+	private PokeStats m_Stats;
 
-    // Getters 
-    public String getName() {return m_Name;}
-    public String getOwner() {return m_Owner;}
-    public int getHPmax() {return m_HP_max;}
-    public int getHPcurr() {return m_HP_curr;}
-    
-    
-    // Setters
-    public void setOwner(String own) {m_Owner = own;}
-    public void setName(String nam) {m_Name = nam;}
-    
+	public PokeBot() {
+		m_Stats = new PokeStats();
+	}
+
+	private final SmartCell[] smartCells = new SmartCell[]{
+			new PokemonCriesCell(m_Stats),
+			new PokemonAttackingCell(m_Stats),
+			new PokemonPokeballCell(m_Stats),
+			new PokemonKOAlertCell(m_Stats),
+	};
+
+
+	@Override
+	public String ask(Tweet question) {
+		for (SmartCell cell : smartCells) {
+			String answer = cell.ask(question);
+			if (answer != null) {
+				return answer;
+			}
+		}
+		return null;
+	}
+
+	// Getters 
+	public String getName() {return m_Stats.getName();}
+	public String getOwner() {return m_Stats.getOwner();}
+	public int getHPmax() {return m_Stats.getHPmax();}
+	public int getHPcurr() {return m_Stats.getHPcurr();}
+	public Twitter getTwit() {return m_Twit;}
+	
+	public PokeStats getPokeStats() {return m_Stats;}
+	
+
+	// Setters
+	public void setTwitter(Twitter twit) {
+		try {
+			m_Twit = twit;
+			MatchExtractor match = new MatchExtractor();
+			User usr = twit.showUser(twit.getScreenName());
+
+			m_Stats.setName(twit.getScreenName());
+
+			m_Stats.setOwner(match.matchExtract(usr.getDescription(), "@")[0]);
+			m_Stats.setRace("Pikachu");
+			m_Stats.setHPmax(50);
+			m_Stats.setHPcurr(49);
+		} catch (IllegalStateException | TwitterException e) {
+			System.out.println("Problème setTwitter() !");
+			e.printStackTrace();
+		}
+	}
+
 }
