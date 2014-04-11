@@ -1,6 +1,6 @@
 package fr.univaix.iut.pokebattle.smartcell;
 
-import fr.univaix.iut.pokebattle.func.PokeStats;
+import fr.iut.pokebattle.persistance.PokeStats;
 import fr.univaix.iut.pokebattle.twitter.Tweet;
 
 public class PokemonCheckDispoCell implements SmartCell {

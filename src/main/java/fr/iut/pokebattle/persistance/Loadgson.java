@@ -1,5 +1,5 @@
 package fr.iut.pokebattle.persistance;
-
+import com.google.gson.Gson;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
@@ -7,7 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-import com.google.gson.Gson;
+
 
 public class Loadgson {
 	public Loadgson() {
@@ -15,13 +15,15 @@ public class Loadgson {
 	}
 
 	public  DataObjectAttack[] gsonPokemonEncodeFromString(String Json) {
-		return gsonPokemonEncode(new ByteArrayInputStream(Json.getBytes()));
+		String finalJson = "[" + Json + "]";
+		return gsonPokemonEncode(new ByteArrayInputStream(finalJson.getBytes()));
 	}
 
 	public  DataObjectAttack[] gsonPokemonEncodeFromFile(String File)
 			throws FileNotFoundException {
-		return gsonPokemonEncode(new FileInputStream("pikachu.json"));
+		return gsonPokemonEncode(new FileInputStream(File));
 	}
+	
 	
 	private static DataObjectAttack[] gsonPokemonEncode(InputStream inputStream) {
 		Gson gson = new Gson();
@@ -30,10 +32,10 @@ public class Loadgson {
 				inputStream));
 
 		DataObjectPokemon[] obj = gson.fromJson(br, DataObjectPokemon[].class);
-		// renvoie la premiere attaque
+		
 		return obj[0].getAttaques();
 
 	}
-
+	
 	
 }

@@ -18,12 +18,6 @@ public class PokemonPokeballCellTest {
 		pkmn.getPokeStats().setName("Forkachu");
 		pkmn.getPokeStats().setOwner("Rwog");
 		pkmn.getPokeStats().setRace("Pikachu");
-		try {
-			pkmn.getPokeStats().setUser(pkmn.getTwit().showUser(pkmn.getTwit().getScreenName()));
-		} catch (IllegalStateException | TwitterException e) {
-			System.out.println("ERREUR SET STAT");
-			e.printStackTrace();
-		}
 		pkmn.getPokeStats().setHPmax(50);
 		pkmn.getPokeStats().setHPcurr(10);
 	}

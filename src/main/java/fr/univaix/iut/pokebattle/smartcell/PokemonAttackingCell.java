@@ -4,9 +4,9 @@ import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.User;
 import fr.univaix.iut.pokebattle.func.MatchExtractor;
-import fr.univaix.iut.pokebattle.func.PokeStats;
-import fr.univaix.iut.pokebattle.twitter.Tweet;
 
+import fr.univaix.iut.pokebattle.twitter.Tweet;
+import fr.iut.pokebattle.persistance.PokeStats;
 public class PokemonAttackingCell implements SmartCell {
 
 	PokeStats m_pkstat;

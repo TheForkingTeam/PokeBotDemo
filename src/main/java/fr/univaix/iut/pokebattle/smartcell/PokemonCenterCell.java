@@ -3,7 +3,7 @@ package fr.univaix.iut.pokebattle.smartcell;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
-import fr.univaix.iut.pokebattle.func.PokeStats;
+import fr.iut.pokebattle.persistance.PokeStats;
 import fr.univaix.iut.pokebattle.twitter.Tweet;
 
 public class PokemonCenterCell implements SmartCell{

@@ -21,6 +21,9 @@ public class DAOPokemon {
         return entityManager.find(PokeStats.class, obj.getName());
     }
 
+    public PokeStats getById(String id) {
+        return entityManager.find(PokeStats.class, id);
+    }
     
     public boolean update(PokeStats obj) {
         try {

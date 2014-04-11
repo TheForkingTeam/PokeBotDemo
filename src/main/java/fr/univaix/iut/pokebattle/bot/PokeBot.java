@@ -1,5 +1,6 @@
 package fr.univaix.iut.pokebattle.bot;
 
+
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
@@ -9,7 +10,7 @@ import fr.univaix.iut.pokebattle.func.*;
 import fr.univaix.iut.pokebattle.smartcell.*;
 
 import fr.univaix.iut.pokebattle.twitter.Tweet;
-
+import fr.iut.pokebattle.persistance.PokeStats;
 
 public class PokeBot implements Bot {
 	private Twitter m_Twit;
@@ -30,12 +31,7 @@ public class PokeBot implements Bot {
 				
 		};
 		
-		try {
-			m_Stats.setUser(m_Twit.showUser(m_Twit.getScreenName()));
-		} catch (IllegalStateException | TwitterException e) {
-			System.out.println("ERROR USER");
-			e.printStackTrace();
-		}
+		
 	}
 
 	
