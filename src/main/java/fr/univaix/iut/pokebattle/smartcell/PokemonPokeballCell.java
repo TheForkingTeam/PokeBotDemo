@@ -26,7 +26,7 @@ public class PokemonPokeballCell implements SmartCell {
 				m_pkstat.setOwner(question.getScreenName());
 				String caughtrep = "@"+question.getScreenName()+" You caught me !";
 				try {
-					m_twit.updateProfile(m_pkstat.getUser().getScreenName(), m_pkstat.getUser().getURL(), m_pkstat.getUser().getLocation() , m_pkstat.getUser().getDescription() + " - Owner: @"+question.getScreenName());
+					m_twit.updateProfile(m_pkstat.getUser().getScreenName(), m_pkstat.getUser().getURL(), m_pkstat.getUser().getLocation() , m_pkstat.getUser().getDescription() + " - Owner: @"+question.getScreenName() + " - Level : " + m_pkstat.getLevel());
 				} catch (TwitterException e) {
 					System.out.println("Erreur set Desc Catch");
 					e.printStackTrace();

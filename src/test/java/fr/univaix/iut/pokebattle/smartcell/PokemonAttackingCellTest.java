@@ -18,6 +18,7 @@ public class PokemonAttackingCellTest {
 		pkmn.getPokeStats().setName("Forkachu");
 		pkmn.getPokeStats().setOwner("Rwog");
 		pkmn.getPokeStats().setRace("Pikachu");
+		pkmn.getPokeStats().setDispo(true);
 		pkmn.getPokeStats().setHPmax(50);
 		pkmn.getPokeStats().setHPcurr(10);
 	}
@@ -25,7 +26,7 @@ public class PokemonAttackingCellTest {
 	@Test
 	public void testAttackNonProprio() {
 		setStat();
-		assertEquals("@Rwog is my user", pkmn.ask(new Tweet("nedseb","@Forkachu #attack #foudre @"+cible)));
+		assertEquals("@nedseb @Rwog is my user", pkmn.ask(new Tweet("nedseb","@Forkachu #attack #foudre @"+cible)));
 		
 	}
 	

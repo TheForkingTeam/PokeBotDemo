@@ -19,11 +19,16 @@ public class PokeBot implements Bot {
 		m_Stats = PokeStats.getInstance();
 		m_Twit = new TwitterFactory().getSingleton();
 		smartCells = new SmartCell[]{
-				new PokemonPokeballCell(m_Stats, m_Twit),
-				new PokemonAttackingCell(m_Stats, m_Twit),
-				new PokemonKOAlertCell(m_Stats),
+				new PokemonHPRefreshCell(m_Stats),
 				new PokemonCriesCell(m_Stats),
+				new PokemonPokeballCell(m_Stats, m_Twit),
+				new PokemonKOAlertCell(m_Stats),
+				new PokemonStatsCell(m_Stats),
+				new PokemonCheckDispoCell(m_Stats),
+				new PokemonAttackingCell(m_Stats, m_Twit),
+				
 		};
+		
 		try {
 			m_Stats.setUser(m_Twit.showUser(m_Twit.getScreenName()));
 		} catch (IllegalStateException | TwitterException e) {
@@ -39,7 +44,8 @@ public class PokeBot implements Bot {
 	public String ask(Tweet question) {
 		for (SmartCell cell : smartCells) {
 			String answer = cell.ask(question);
-			if (answer == "next_cell") answer = null;
+			if (answer == "last_cell") { answer = "@"+ question.getScreenName() + " Wut ?"; }
+			if (answer == "next_cell") { answer = null; }
 			if (answer != null) {
 				return answer;
 			}

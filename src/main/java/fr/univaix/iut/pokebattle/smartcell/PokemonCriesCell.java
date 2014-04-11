@@ -16,6 +16,7 @@ public class PokemonCriesCell implements SmartCell {
 	}
 	
     public String ask(Tweet question) {
+
         if (question.getScreenName() != null ) {
         	if (question.getText().toLowerCase().contains("owner")) {
         		if (m_pksts.getOwner() != null) {
@@ -29,8 +30,7 @@ public class PokemonCriesCell implements SmartCell {
         		if (question.getText().toLowerCase().contains(HiSet[i]))
         			return "@" + question.getScreenName() + " Hay !";
         	}
-        	return "@" + question.getScreenName() + " Wut ?";
         }
-        return " Wut ?";
+        return "next_cell";
     }
 }
