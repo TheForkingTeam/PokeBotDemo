@@ -8,7 +8,6 @@ import static org.junit.Assert.assertEquals;
 
 public class PokemonCriesCellTest {
 	
-	String usertest = "nedseb"; 
 	PokeBot pkmn = new PokeBot();
 	
 	PokemonCriesCell cell = new PokemonCriesCell(pkmn.getPokeStats());
@@ -24,25 +23,25 @@ public class PokemonCriesCellTest {
     @Test
     public void testSalut() {
 		setStat();
-        assertEquals("@"+usertest+" Hay !", pkmn.ask(new Tweet(usertest, "Hey salut!")));
+        assertEquals("@usertest Hay !", pkmn.ask(new Tweet("usertest", "Hey salut!")));
     }
 
     @Test
     public void testNotSalut() {
     	setStat();
-       assertEquals("@"+usertest+" Wut ?", pkmn.ask(new Tweet(usertest, "N'importe quoi")));
+       assertEquals("@usertest Wut ?", pkmn.ask(new Tweet("usertest", "N'importe quoi")));
     }
     
     @Test
     public void testReturnNomEleveur() {
     	setStat();
-    	assertEquals("@"+usertest+" @Rwog is my owner", cell.ask(new Tweet(usertest, "Owner?")));
+    	assertEquals("@usertest Rwog is my owner", cell.ask(new Tweet("usertest", "Owner?")));
     }
-
+    
     @Test
-    public void testChange() {
+    public void testNoDresseur() {
     	setStat();
-    	System.out.println(cell.ask(new Tweet("abcd","Owner ?")));
-
+    	pkmn.getPokeStats().setOwner(null);
+    	assertEquals("@person No owner", cell.ask(new Tweet("person", "Owner?")));
     }
 }

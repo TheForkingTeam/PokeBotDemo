@@ -28,14 +28,7 @@ public class PokeBot implements Bot {
 				new PokemonAttackingCell(m_Stats, m_Twit),
 				
 		};
-		
-		try {
-			m_Stats.setUser(m_Twit.showUser(m_Twit.getScreenName()));
-		} catch (IllegalStateException | TwitterException e) {
-			System.out.println("ERROR USER");
-			e.printStackTrace();
-		}
-	}
+}
 
 	
 
@@ -44,23 +37,16 @@ public class PokeBot implements Bot {
 	public String ask(Tweet question) {
 		for (SmartCell cell : smartCells) {
 			String answer = cell.ask(question);
-			if (answer == "last_cell") { answer = "@"+ question.getScreenName() + " Wut ?"; }
+			if (answer == "last_cell") { break; }
 			if (answer == "next_cell") { answer = null; }
 			if (answer != null) {
 				return answer;
 			}
 		}
-		return null;
+		return "@"+ question.getScreenName() + " Wut ?";
 	}
 
 	// Getters 
-	public String getName() {return m_Stats.getName();}
-	public String getOwner() {return m_Stats.getOwner();}
-	public int getHPmax() {return m_Stats.getHPmax();}
-	public int getHPcurr() {return m_Stats.getHPcurr();}
-	public Twitter getTwit() {return m_Twit;}
-	
-
 	public PokeStats getPokeStats() {return m_Stats;}
 	
 
@@ -71,12 +57,8 @@ public class PokeBot implements Bot {
 			MatchExtractor match = new MatchExtractor();
 			User usr = twit.showUser(twit.getScreenName());
 			m_Stats.setName(twit.getScreenName());
-			m_Stats.setOwner(match.matchExtract(usr.getDescription(), "@")[0]);
-			m_Stats.setRace("Pikachu");
-			m_Stats.setHPmax(50);
-			m_Stats.setHPcurr(49);
-			
-		} catch (IllegalStateException | TwitterException e) {
+		} 
+		catch (IllegalStateException | TwitterException e) {
 			System.out.println("Problème setTwitter() !");
 			e.printStackTrace();
 		} 

@@ -15,9 +15,7 @@ public class PokeStats {
 	private int m_HP_max; 
 	private int m_HP_curr;
 	private boolean m_dispo = true;
-	private int m_timewait = 0;
 	private Date m_lastact = Calendar.getInstance().getTime();
-	private User m_usr;
 
 	private static PokeStats instance = null;
 
@@ -36,11 +34,9 @@ public class PokeStats {
 	public String getOwner() {return m_Owner;}
 	public int getHPmax() {return m_HP_max;}
 	public int getHPcurr() {return m_HP_curr;}
-	public User getUser() {return m_usr;}
 	public int getLevel() {return m_level;}
 	public int getXp() {return m_xp;}
 	public boolean isDispo(){ return m_dispo;}
-	public int getTimeWait(){ return m_timewait;}
 	public Date getLastDate() {return m_lastact; }
 	
 	// Setters
@@ -49,7 +45,6 @@ public class PokeStats {
 	public void setRace(String typ) {m_Race = typ;}
 	public void setHPmax(int hpmax) {m_HP_max = hpmax;}
 	public void setHPcurr(int hpcurr) {m_HP_curr = hpcurr;}
-	public void setUser(User ussr) {m_usr = ussr;}
 	public void setXp(int newxp) {m_xp = newxp;}
 	public void setLevel(int newlvl) {m_level = newlvl;}
 	public void setDispo(boolean bool){ m_dispo = bool;}

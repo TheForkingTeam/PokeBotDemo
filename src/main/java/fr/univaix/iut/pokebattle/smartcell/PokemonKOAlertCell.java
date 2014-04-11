@@ -18,7 +18,6 @@ public class PokemonKOAlertCell implements SmartCell {
 			
 			if (m_pkstat.getHPcurr() <= 0) {
 				m_pkstat.setHPcurr(0);
-				System.out.println("KO !");
 				return "#KO";
 			}
 			

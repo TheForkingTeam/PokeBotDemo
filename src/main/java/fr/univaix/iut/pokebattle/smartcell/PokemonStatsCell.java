@@ -12,12 +12,22 @@ public class PokemonStatsCell implements SmartCell{
 	}
 	
 	public String ask(Tweet question) {
+		
 		if (question.getText().contains("#stat")) {
+			String strres="@" + question.getScreenName();
+			
 			if (question.getText().contains("#level")) {
-				return "@" + question.getScreenName() + " #level=" + m_pkst.getLevel();
+				strres += " #level=" + m_pkst.getLevel();
 			}
+			if (question.getText().contains("#PV")) {
+				strres += " #PV=" + m_pkst.getHPcurr()+"/"+m_pkst.getHPmax();
+			}
+			if (question.getText().contains("#XP")) {
+				strres += " #XP=" + m_pkst.getXp();
+			}
+			return strres;
 		}
-		return null;
+		return "next_cell";
 	}
 
 }
