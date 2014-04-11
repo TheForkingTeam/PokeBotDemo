@@ -1,10 +1,10 @@
 package fr.iut.pokebattle.persistance;
 
-import java.util.List;
+
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-import javax.persistence.TypedQuery;
+
 
 public class DAOPokemon {
 	private EntityManager entityManager;

@@ -21,7 +21,7 @@ public class PokemonCriesCell implements SmartCell {
         	if (question.getText().toLowerCase().contains("owner")) {
         		if (m_pksts.getOwner() != null) {
         			return "@" + question.getScreenName() 
-        					+ " @" + m_pksts.getOwner() + " is my owner";
+        					+ " " + m_pksts.getOwner() + " is my owner";
         			}
         			return "@" + question.getScreenName() 
         					+ " No owner";

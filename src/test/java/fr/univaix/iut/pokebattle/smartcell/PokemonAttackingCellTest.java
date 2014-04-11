@@ -16,7 +16,7 @@ public class PokemonAttackingCellTest {
 	
 	public void setStat() {
 		pkmn.getPokeStats().setName("Forkachu");
-		pkmn.getPokeStats().setOwner("Rwog");
+		pkmn.getPokeStats().setOwner("@Rwog");
 		pkmn.getPokeStats().setRace("Pikachu");
 		pkmn.getPokeStats().setDispo(true);
 		pkmn.getPokeStats().setHPmax(50);
@@ -26,14 +26,25 @@ public class PokemonAttackingCellTest {
 	@Test
 	public void testAttackNonProprio() {
 		setStat();
-		assertEquals("@nedseb @Rwog is my user", pkmn.ask(new Tweet("nedseb","@Forkachu #attack #foudre @"+cible)));
+
+		assertEquals("@BadOwner @Rwog is my user", pkmn.ask(new Tweet("BadOwner","@Forkachu #attack #foudre @pkmncible /cc @cibleown")));
+
 		
 	}
 	
 	@Test
 	public void testAttackProprio() {
 		setStat();
-		assertEquals("@"+cible+" #attack #foudre! /cc @Rwog @needsob", pkmn.ask(new Tweet("Rwog","@Forkachu #attack #foudre @"+cible+" /cc @"+cibleown)));
+
+		assertEquals("@pkmncible #attack #foudre! /cc @Rwog @cibleown", pkmn.ask(new Tweet("Rwog","@Forkachu #attack #foudre @pkmncible /cc @cibleown")));
+	}
+	
+	@Test
+	public void testWildPokemon() {
+		setStat();
+		pkmn.getPokeStats().setOwner(null);
+		assertEquals("@Rwog Nobody can tell me what to do ! *middle finger*...*runs away*", pkmn.ask(new Tweet("Rwog","@Forkachu #attack #foudre @pkmncible /cc @cibleown")));
+
 	}
 
 }

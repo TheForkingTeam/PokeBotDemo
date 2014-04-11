@@ -11,10 +11,6 @@ import fr.univaix.iut.pokebattle.tuse.TUSEException;
 public class PokemonMain {
     private static final Logger LOGGER = LoggerFactory.getLogger(PokemonMain.class);
 
-    private PokemonMain() {
-
-    }
-
     public static void main(String[] args) throws TwitterException {
         try {
             BotRunner.runBot(new PokeBot(), "twitter4j.properties");
