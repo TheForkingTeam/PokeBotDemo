@@ -1,10 +1,10 @@
 package fr.univaix.iut.pokebattle.smartcell;
-
+import fr.univaix.iut.pokebattle.bot.*;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import fr.univaix.iut.pokebattle.bot.PokeBot;
+
 import fr.univaix.iut.pokebattle.twitter.Tweet;
 
 public class PokemonAttackingCellTest {
@@ -26,13 +26,16 @@ public class PokemonAttackingCellTest {
 	@Test
 	public void testAttackNonProprio() {
 		setStat();
+
 		assertEquals("@BadOwner @Rwog is my user", pkmn.ask(new Tweet("BadOwner","@Forkachu #attack #foudre @pkmncible /cc @cibleown")));
+
 		
 	}
 	
 	@Test
 	public void testAttackProprio() {
 		setStat();
+
 		assertEquals("@pkmncible #attack #foudre! /cc @Rwog @cibleown", pkmn.ask(new Tweet("Rwog","@Forkachu #attack #foudre @pkmncible /cc @cibleown")));
 	}
 	
@@ -41,6 +44,7 @@ public class PokemonAttackingCellTest {
 		setStat();
 		pkmn.getPokeStats().setOwner(null);
 		assertEquals("@Rwog Nobody can tell me what to do ! *middle finger*...*runs away*", pkmn.ask(new Tweet("Rwog","@Forkachu #attack #foudre @pkmncible /cc @cibleown")));
+
 	}
 
 }

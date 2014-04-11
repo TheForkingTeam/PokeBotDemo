@@ -3,7 +3,9 @@ package fr.univaix.iut.pokebattle.smartcell;
 
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
-import fr.univaix.iut.pokebattle.func.PokeStats;
+
+import fr.iut.pokebattle.persistance.*;
+
 import fr.univaix.iut.pokebattle.twitter.Tweet;
 
 

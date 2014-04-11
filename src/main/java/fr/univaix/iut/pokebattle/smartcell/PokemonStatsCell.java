@@ -1,6 +1,7 @@
 package fr.univaix.iut.pokebattle.smartcell;
 
-import fr.univaix.iut.pokebattle.func.PokeStats;
+
+import fr.iut.pokebattle.persistance.*;
 import fr.univaix.iut.pokebattle.twitter.Tweet;
 
 public class PokemonStatsCell implements SmartCell{
@@ -12,6 +13,7 @@ public class PokemonStatsCell implements SmartCell{
 	}
 	
 	public String ask(Tweet question) {
+
 		
 		if (question.getText().contains("#stat")) {
 			String strres="@" + question.getScreenName();

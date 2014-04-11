@@ -1,6 +1,7 @@
 package fr.univaix.iut.pokebattle.bot;
 
 
+
 import java.util.Calendar;
 import java.util.Date;
 
@@ -11,10 +12,12 @@ import org.mockito.Mockito;
 
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
+
 import twitter4j.TwitterFactory;
 import twitter4j.User;
 
 import static org.junit.Assert.assertEquals;
+
 
 // Utilisation de diverses SmartCells pour voir si le Bot fonctionne.
 public class PokeBotTest {

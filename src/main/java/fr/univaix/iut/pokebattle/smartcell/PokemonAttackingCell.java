@@ -1,10 +1,11 @@
 package fr.univaix.iut.pokebattle.smartcell;
 
 import twitter4j.Twitter;
-import fr.univaix.iut.pokebattle.func.MatchExtractor;
-import fr.univaix.iut.pokebattle.func.PokeStats;
-import fr.univaix.iut.pokebattle.twitter.Tweet;
 
+import fr.univaix.iut.pokebattle.func.MatchExtractor;
+
+import fr.univaix.iut.pokebattle.twitter.Tweet;
+import fr.iut.pokebattle.persistance.PokeStats;
 public class PokemonAttackingCell implements SmartCell {
 
 	PokeStats m_pkstat;
@@ -32,6 +33,7 @@ public class PokemonAttackingCell implements SmartCell {
 			}
 			else {
 				return "@" + question.getScreenName() + " " +m_pkstat.getOwner() + " is my user";
+
 			}
 
 		}

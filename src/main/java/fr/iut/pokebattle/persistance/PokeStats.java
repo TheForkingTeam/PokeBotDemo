@@ -1,21 +1,48 @@
-package fr.univaix.iut.pokebattle.func;
+package fr.iut.pokebattle.persistance;
 
 import java.util.Calendar;
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import twitter4j.User;
 
+@Entity
+@NamedQueries({
+	@NamedQuery(name = PokeStats.FIND_BY_NOM, query = "SELECT p FROM PokeStats p WHERE p.m_Name = :fnom")
+	})
 public class PokeStats {
 
+	public static final String FIND_BY_NOM = "findPokemonByNom";
+	
+	@Id
 	private String m_Name   = null;
+	@Column(length=50)
 	private String m_Race   = null;
+	@Column(length=50)
 	private String m_Owner  = null;
+	@Column
 	private int m_level     = 1;
+	@Column
 	private int m_xp	    = 0;
+	@Column
 	private int m_HP_max; 
+	@Column
 	private int m_HP_curr;
+	@Column
 	private boolean m_dispo = true;
+	@Column
+	private int m_timewait = 0;
+	@Temporal(TemporalType.DATE)
 	private Date m_lastact = Calendar.getInstance().getTime();
+	@Column(length=2000)
+	private String m_attaques;
 
 	private static PokeStats instance = null;
 
@@ -37,6 +64,7 @@ public class PokeStats {
 	public int getLevel() {return m_level;}
 	public int getXp() {return m_xp;}
 	public boolean isDispo(){ return m_dispo;}
+	public int getTimeWait(){ return m_timewait;}
 	public Date getLastDate() {return m_lastact; }
 	
 	// Setters

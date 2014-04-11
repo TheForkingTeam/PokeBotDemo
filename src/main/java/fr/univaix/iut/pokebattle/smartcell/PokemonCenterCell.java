@@ -1,6 +1,6 @@
 package fr.univaix.iut.pokebattle.smartcell;
 
-import fr.univaix.iut.pokebattle.func.PokeStats;
+import fr.iut.pokebattle.persistance.*;
 import fr.univaix.iut.pokebattle.twitter.Tweet;
 
 public class PokemonCenterCell implements SmartCell{
@@ -13,14 +13,17 @@ public class PokemonCenterCell implements SmartCell{
 
 	public String ask(Tweet question) {
 
+
 		int minutes = 0;
 
 		if (question.getScreenName() == m_pkstat.getOwner()) {
+
 			if (question.getText().contains("#heal"))
 			{	
 				if (m_pkstat.getHPcurr() == m_pkstat.getHPmax()){
 					return "@" + question.getScreenName() + " I'm alredy full of health !";
 				}
+
 
 				for (int pvHeal = Math.round(m_pkstat.getHPmax()/10) ; m_pkstat.getHPcurr() == m_pkstat.getHPmax() ; )
 				{

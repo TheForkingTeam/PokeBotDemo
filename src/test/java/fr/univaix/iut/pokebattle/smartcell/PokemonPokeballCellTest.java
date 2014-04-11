@@ -1,10 +1,12 @@
 package fr.univaix.iut.pokebattle.smartcell;
 
 import static org.junit.Assert.*;
+
 import fr.univaix.iut.pokebattle.twitter.Tweet;
 import org.junit.Test;
 
 import fr.univaix.iut.pokebattle.bot.PokeBot;
+
 
 public class PokemonPokeballCellTest {
 
@@ -32,4 +34,5 @@ public class PokemonPokeballCellTest {
 		pkmn.getPokeStats().setOwner(null);
 		assertEquals("@person You caught me !", pkmn.ask(new Tweet("person", "Pokeball!")));
 	}	
+
 }
