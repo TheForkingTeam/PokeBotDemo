@@ -23,7 +23,7 @@ public class PokemonKOAlertCell implements SmartCell {
 			}
 			
 		}
-		return null;
+		return "next_cell";
 	}
 
 } //

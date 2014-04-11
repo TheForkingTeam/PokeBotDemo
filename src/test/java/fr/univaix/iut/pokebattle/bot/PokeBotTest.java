@@ -1,11 +1,11 @@
 package fr.univaix.iut.pokebattle.bot;
 
-import fr.univaix.iut.pokebattle.twitter.Tweet;
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
 import twitter4j.TwitterException;
-
-import static org.junit.Assert.assertEquals;
+import fr.univaix.iut.pokebattle.twitter.Tweet;
 
 // Utilisation de diverses SmartCells pour voir si le Bot fonctionne.
 public class PokeBotTest {

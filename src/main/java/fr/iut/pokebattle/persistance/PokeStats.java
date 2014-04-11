@@ -1,12 +1,19 @@
-package fr.univaix.iut.pokebattle.func;
+package fr.iut.pokebattle.persistance;
 
 import java.util.Calendar;
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+
 import twitter4j.User;
+
+@Entity
 
 public class PokeStats {
 
+	@Id
 	private String m_Name   = null;
 	private String m_Race   = null;
 	private String m_Owner  = null;
