@@ -1,10 +1,10 @@
 package fr.univaix.iut.pokebattle.smartcell;
-
+import fr.univaix.iut.pokebattle.bot.*;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import fr.univaix.iut.pokebattle.bot.PokeBot;
+
 import fr.univaix.iut.pokebattle.twitter.Tweet;
 
 public class PokemonKOAlertTest {

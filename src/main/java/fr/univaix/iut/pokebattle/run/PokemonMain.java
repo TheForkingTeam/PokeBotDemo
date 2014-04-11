@@ -1,19 +1,15 @@
 package fr.univaix.iut.pokebattle.run;
 
-import fr.univaix.iut.pokebattle.bot.PokeBot;
-import fr.univaix.iut.pokebattle.tuse.TUSEException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import twitter4j.TwitterException;
+import fr.univaix.iut.pokebattle.bot.PokeBot;
+import fr.univaix.iut.pokebattle.tuse.TUSEException;
 
 
 public class PokemonMain {
     private static final Logger LOGGER = LoggerFactory.getLogger(PokemonMain.class);
-
-    private PokemonMain() {
-
-    }
 
     public static void main(String[] args) throws TwitterException {
         try {

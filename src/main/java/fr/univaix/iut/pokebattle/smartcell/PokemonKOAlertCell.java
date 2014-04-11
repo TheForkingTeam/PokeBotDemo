@@ -1,6 +1,6 @@
 package fr.univaix.iut.pokebattle.smartcell;
 
-import fr.univaix.iut.pokebattle.func.PokeStats;
+import fr.iut.pokebattle.persistance.PokeStats;
 import fr.univaix.iut.pokebattle.twitter.Tweet;
 
 public class PokemonKOAlertCell implements SmartCell {
@@ -18,12 +18,11 @@ public class PokemonKOAlertCell implements SmartCell {
 			
 			if (m_pkstat.getHPcurr() <= 0) {
 				m_pkstat.setHPcurr(0);
-				System.out.println("KO !");
 				return "#KO";
 			}
 			
 		}
-		return null;
+		return "next_cell";
 	}
 
 } //
