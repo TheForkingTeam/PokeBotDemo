@@ -7,6 +7,9 @@ public class DataObjectAttack {
     String precision;
     String pp;
 
+    public DataObjectAttack () {
+    	
+    }
     public DataObjectAttack(String niveau, String nom, String puissance, String precision, 
                             String pp) {
         this.niveau = niveau;

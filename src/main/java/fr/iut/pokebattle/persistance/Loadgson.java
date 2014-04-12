@@ -16,26 +16,29 @@ public class Loadgson {
 
 	public  DataObjectAttack[] gsonPokemonEncodeFromString(String Json) {
 		String finalJson = "[" + Json + "]";
-		return gsonPokemonEncode(new ByteArrayInputStream(finalJson.getBytes()));
+		return gsonPokemonAttackEncode(new ByteArrayInputStream(finalJson.getBytes()));
 	}
 
 	public  DataObjectAttack[] gsonPokemonEncodeFromFile(String File)
 			throws FileNotFoundException {
-		return gsonPokemonEncode(new FileInputStream(File));
+		return gsonPokemonAttackEncode(new FileInputStream(File));
 	}
 	
 	
-	private static DataObjectAttack[] gsonPokemonEncode(InputStream inputStream) {
+
+	public DataObjectAttack[] gsonPokemonAttackEncode(InputStream inputStream) {
 		Gson gson = new Gson();
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(
 				inputStream));
 
 		DataObjectPokemon[] obj = gson.fromJson(br, DataObjectPokemon[].class);
-		
+
 		return obj[0].getAttaques();
 
 	}
 	
 	
+	
+
 }

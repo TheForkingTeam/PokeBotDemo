@@ -1,17 +1,10 @@
 package fr.univaix.iut.persistance;
 
 import static org.junit.Assert.assertEquals;
-
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.Calendar;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
 import org.junit.Test;
-
-import fr.iut.pokebattle.persistance.DAOPokemon;
+import fr.iut.pokebattle.persistance.DataObjectAttack;
 import fr.iut.pokebattle.persistance.Loadgson;
 import fr.iut.pokebattle.persistance.PokeStats;
 
@@ -32,29 +25,27 @@ public class PersistanceTest {
 	public void testLoadgsonAttaqueFromFile() throws FileNotFoundException {
 		assertEquals(
 				"DataObjectAttack{niveau='Départ', nom='Éclair', puissance=40, precision=100, pp=30}",
-				loader.gsonPokemonEncodeFromFile("pikachu.json")[0].toString());
+				loader.gsonPokemonEncodeFromFile("pikachuattacking.json")[0].toString());
 	}
 
+	
 	@Test
-	public void testPersistance() {
-		EntityManagerFactory emf = Persistence
-				.createEntityManagerFactory("pokebattlePU");
-		EntityManager em = emf
-				.createEntityManager();
-
-		DAOPokemon pika = new DAOPokemon(em);
-
-		PokeStats stats = new PokeStats();
-		stats.setName("pikachu");
-		stats.setLevel(1);
-		stats.setHPcurr(100);
-		stats.setHPmax(150);
-		stats.setDispo(true);
-		stats.setLastDate(Calendar.getInstance().getTime());
-		stats.setLevel(10);
-		stats.setOwner("Rwog");
-		
-		pika.insert(stats);
+	public void testgsonPokemonEncode() throws FileNotFoundException {
+	
+		FileInputStream fs = new FileInputStream("pikachuattacking.json");
+		DataObjectAttack DAO[] = loader.gsonPokemonAttackEncode(fs);
+		assertEquals( "DataObjectAttack{niveau='Départ', nom='Éclair', puissance=40, precision=100, pp=30}", DAO[0].toString() );
 		
 	}
+	
+	@Test
+	public void testjsonAttacktoPokestats() throws FileNotFoundException {
+		PokeStats pok = new PokeStats();
+		DataObjectAttack attck[] = loader.gsonPokemonEncodeFromFile("pikachuattacking.json");
+		
+		assertEquals("DataObjectAttack{niveau='Départ', nom='Éclair', puissance=40, precision=100, pp=30}", attck[0].toString());
+	}
+	
+	
+
 }
