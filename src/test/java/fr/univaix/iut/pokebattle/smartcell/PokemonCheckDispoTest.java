@@ -12,6 +12,8 @@ public class PokemonCheckDispoTest {
 	PokeBot pkmn = new PokeBot();
 	PokemonCheckDispoCell cell = new PokemonCheckDispoCell(pkmn.getPokeStats());
 	
+	
+
 	@Test
 	public void testDispo() {
 		pkmn.getPokeStats().setDispo(true);
@@ -24,4 +26,11 @@ public class PokemonCheckDispoTest {
 		assertEquals("@usr I'm currently healing at the Pokemon Center.", cell.ask(new Tweet("usr","@forkachu #attack ")));
 	}
 
+	public PokeBot getPkmn() {
+		return pkmn;
+	}
+	
+	public PokemonCheckDispoCell getCell() {
+		return cell;
+	}
 }

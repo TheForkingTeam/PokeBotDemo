@@ -25,10 +25,10 @@ public class PokemonCenterCell implements SmartCell{
 				}
 
 
-				for (int pvHeal = Math.round(m_pkstat.getHPmax()/10) ; m_pkstat.getHPcurr() == m_pkstat.getHPmax() ; )
+				for (int pvHeal = Math.round(m_pkstat.getHPmax() / 10); m_pkstat.getHPcurr() == m_pkstat.getHPmax();)
 				{
-					minutes = (m_pkstat.getHPmax()-m_pkstat.getHPcurr())/10;
-					m_pkstat.setHPcurr(m_pkstat.getHPcurr()+pvHeal);
+					minutes = (m_pkstat.getHPmax() - m_pkstat.getHPcurr()) / 10;
+					m_pkstat.setHPcurr(m_pkstat.getHPcurr() + pvHeal);
 					if (m_pkstat.getHPcurr() > m_pkstat.getHPmax()) {
 						m_pkstat.setHPcurr(m_pkstat.getHPmax());
 					}
@@ -40,7 +40,7 @@ public class PokemonCenterCell implements SmartCell{
 		else if (question.getScreenName() == "PokeTimer") {
 			if (question.getText().contains("WakeUpForkachu")){
 				m_pkstat.setHPcurr(m_pkstat.getHPmax());
-				return "@"+ m_pkstat.getOwner() + " I'm restored to full health !";
+				return "@" + m_pkstat.getOwner() + " I'm restored to full health !";
 			}
 			
 		}

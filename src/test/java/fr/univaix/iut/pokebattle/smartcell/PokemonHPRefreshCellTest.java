@@ -21,7 +21,7 @@ public class PokemonHPRefreshCellTest {
 		long before = pkmn.getPokeStats().getLastDate().getTime();
 		long now = Calendar.getInstance().getTime().getTime()+61; // 61min plus tard
 		System.out.println(now-before);
-		System.out.println("HP:" + pkmn.getPokeStats().getHPcurr()+"/"+pkmn.getPokeStats().getHPmax());		
+		System.out.println("HP:" + pkmn.getPokeStats().getHPcurr() + "/" + pkmn.getPokeStats().getHPmax());		
 		assertEquals("next_cell",cell.ask(new Tweet("")));
 		
 		 

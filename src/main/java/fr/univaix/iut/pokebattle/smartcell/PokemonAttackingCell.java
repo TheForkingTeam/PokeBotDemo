@@ -26,10 +26,10 @@ public class PokemonAttackingCell implements SmartCell {
 		if (question.getText().contains("#attack")) {
 
 			if (m_pkstat.getOwner() == null) {
-				return "@" + question.getScreenName()+ " Nobody can tell me what to do ! *middle finger*...*runs away*";
+				return "@" + question.getScreenName() + " Nobody can tell me what to do ! *middle finger*...*runs away*";
 			}
 			if ( m_pkstat.getOwner().equals("@"+question.getScreenName())) {
-				return usess[1] + " #attack #foudre! /cc " + m_pkstat.getOwner() +" "+ usess[2] ;
+				return usess[1] + " #attack #foudre! /cc " + m_pkstat.getOwner() + " " + usess[2] ;
 			}
 			else {
 				return "@" + question.getScreenName() + " " +m_pkstat.getOwner() + " is my user";

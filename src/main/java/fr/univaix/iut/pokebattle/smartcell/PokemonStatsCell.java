@@ -22,7 +22,7 @@ public class PokemonStatsCell implements SmartCell{
 				strres += " #level=" + m_pkst.getLevel();
 			}
 			if (question.getText().contains("#PV")) {
-				strres += " #PV=" + m_pkst.getHPcurr()+"/"+m_pkst.getHPmax();
+				strres += " #PV=" + m_pkst.getHPcurr() + "/" + m_pkst.getHPmax();
 			}
 			if (question.getText().contains("#XP")) {
 				strres += " #XP=" + m_pkst.getXp();

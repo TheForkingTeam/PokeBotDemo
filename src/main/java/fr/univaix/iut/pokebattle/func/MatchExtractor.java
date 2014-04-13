@@ -12,11 +12,12 @@ public class MatchExtractor {
 
 		String regexp = charr + "(\\w+)" ;
 		int indexhash = 0;
-		String[] reslist = new String[10];
+		int size = 10;
+		String[] reslist = new String[size];
 		Pattern pattern = Pattern.compile(regexp);
 		Matcher matcher = pattern.matcher(txt);
 
-		while (matcher.find() && indexhash < 10) {
+		while (matcher.find() && indexhash < size) {
 			reslist[indexhash++] = matcher.group();
 
 		}			

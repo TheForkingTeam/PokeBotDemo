@@ -13,36 +13,33 @@ import javax.persistence.TemporalType;
 
 import twitter4j.User;
 
-@Entity
-@NamedQueries({
-	@NamedQuery(name = PokeStats.FIND_BY_NOM, query = "SELECT p FROM PokeStats p WHERE p.m_Name = :fnom")
-	})
+
 public class PokeStats {
 
 	public static final String FIND_BY_NOM = "findPokemonByNom";
+
 	
-	@Id
 	private String m_Name   = null;
-	@Column(length=50)
+	
 	private String m_Race   = null;
-	@Column(length=50)
+	
 	private String m_Owner  = null;
-	@Column
+	
 	private int m_level     = 1;
-	@Column
+	
 	private int m_xp	    = 0;
-	@Column
+	
 	private int m_HP_max; 
-	@Column
+	
 	private int m_HP_curr;
-	@Column
+	
 	private boolean m_dispo = true;
-	@Column
+	
 	private int m_timewait = 0;
-	@Temporal(TemporalType.DATE)
+	
 	private Date m_lastact = Calendar.getInstance().getTime();
-	@Column(length=2000)
-	private String m_attaques;
+	
+	private DataObjectAttack[] m_attaques;
 
 	private static PokeStats instance = null;
 
@@ -66,7 +63,7 @@ public class PokeStats {
 	public boolean isDispo(){ return m_dispo;}
 	public int getTimeWait(){ return m_timewait;}
 	public Date getLastDate() {return m_lastact; }
-	
+
 	// Setters
 	public void setOwner(String own) {m_Owner = own;}
 	public void setName(String nam) {m_Name = nam;}
@@ -77,4 +74,6 @@ public class PokeStats {
 	public void setLevel(int newlvl) {m_level = newlvl;}
 	public void setDispo(boolean bool){ m_dispo = bool;}
 	public void setLastDate(Date laaast) {m_lastact = laaast; }
+	public void setTimeWait(int time) {m_timewait = time; }
+	
 }
