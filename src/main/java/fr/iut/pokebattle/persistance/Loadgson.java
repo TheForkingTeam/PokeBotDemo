@@ -14,17 +14,15 @@ public class Loadgson {
 		super();
 	}
 
-	public  DataObjectAttack[] gsonPokemonEncodeFromString(String Json) {
+	public DataObjectAttack[] gsonPokemonEncodeFromString(String Json) {
 		String finalJson = "[" + Json + "]";
 		return gsonPokemonAttackEncode(new ByteArrayInputStream(finalJson.getBytes()));
 	}
 
-	public  DataObjectAttack[] gsonPokemonEncodeFromFile(String File)
+	public DataObjectAttack[] gsonPokemonEncodeFromFile(String File)
 			throws FileNotFoundException {
 		return gsonPokemonAttackEncode(new FileInputStream(File));
 	}
-	
-	
 
 	public DataObjectAttack[] gsonPokemonAttackEncode(InputStream inputStream) {
 		Gson gson = new Gson();

@@ -6,7 +6,7 @@ import fr.univaix.iut.pokebattle.twitter.Tweet;
 
 public class PokemonCheckDispoCell implements SmartCell {
 	
-	PokeStats m_pkmn;
+	private PokeStats m_pkmn;
 	
 	public PokemonCheckDispoCell(PokeStats pk) {
 		m_pkmn = pk;

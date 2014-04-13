@@ -1,14 +1,13 @@
 package fr.iut.pokebattle.persistance;
 
 public class DataObjectAttack {
-    String niveau;
-    String nom;
-    String puissance;
-    String precision;
-    String pp;
+    private String niveau;
+    private String nom;
+    private String puissance;
+    private String precision;
+    private String pp;
 
     public DataObjectAttack () {
-    	
     }
     public DataObjectAttack(String niveau, String nom, String puissance, String precision, 
                             String pp) {
