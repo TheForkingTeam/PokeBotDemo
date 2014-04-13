@@ -14,7 +14,7 @@ public class PokemonKOAlertCell implements SmartCell {
 	public String ask(Tweet question) {
 		if (question.getText().contains("-10HP")){
 			
-			m_pkstat.setHPcurr(m_pkstat.getHPcurr()-10);
+			m_pkstat.setHPcurr(m_pkstat.getHPcurr() - 10);
 			
 			if (m_pkstat.getHPcurr() <= 0) {
 				m_pkstat.setHPcurr(0);

@@ -25,7 +25,7 @@ public class PokemonPokeballCell implements SmartCell {
 			//Tweet Pokeball NewOwner
 			if (m_pkstat.getOwner() == null) {
 				m_pkstat.setOwner(question.getScreenName());
-				String caughtrep = "@"+question.getScreenName()+" You caught me !";
+				String caughtrep = "@" + question.getScreenName() + " You caught me !";
 				try {
 					m_twit.updateProfile(m_twit.getScreenName(), m_twit.showUser(m_twit.getScreenName()).getURL().toString(), m_twit.showUser(m_twit.getScreenName()).getLocation() , m_twit.showUser(m_twit.getScreenName()).getDescription() + " - Owner: @"+question.getScreenName() + " - Level : " + m_pkstat.getLevel());
 				} catch (TwitterException e) {
